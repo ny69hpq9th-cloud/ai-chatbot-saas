@@ -1,0 +1,21 @@
+Options -Indexes
+RewriteEngine On
+
+# Route /api/* to the API router
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^api/(.*)$ /api/index.php [QSA,L]
+
+# Serve static files as-is
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# All other PHP pages
+RewriteRule ^(.*)$ /$1.php [QSA,L]
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
