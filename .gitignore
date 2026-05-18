@@ -1,10 +1,11 @@
-# Environment
+# Environment — NEVER commit real credentials
 .env
 .env.local
+.env.production
+.env.staging
 
-# Logs
-/logs/
-*.log
+# Logs (keep directory, ignore log files)
+/logs/*.log
 
 # Composer
 /vendor/
@@ -13,8 +14,16 @@ composer.lock
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # IDE
 .vscode/
 .idea/
 *.swp
+*.swo
+*~
+
+# Runtime / temp
+/tmp/
+/cache/
+*.bak
