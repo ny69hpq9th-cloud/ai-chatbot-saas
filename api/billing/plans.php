@@ -32,6 +32,15 @@ json_ok([
         'features' => ['20 chatbots','25,000 messages/mo','Full analytics','Dedicated support','API access','Custom domain'],
     ],
     [
+        'id'       => 'agency',
+        'name'     => 'Agency',
+        'price'    => 149,
+        'currency' => 'usd',
+        'limits'   => PLAN_LIMITS['agency'],
+        'stripe_price_id' => STRIPE_PRICE_AGENCY,
+        'features' => ['Unlimited chatbots','9,999,999 messages/mo','Full analytics','Dedicated support','API access','White-label','Client management'],
+    ],
+    [
         'id'       => 'enterprise',
         'name'     => 'Enterprise',
         'price'    => null,

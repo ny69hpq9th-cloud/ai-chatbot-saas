@@ -41,6 +41,7 @@ $routes = [
     ['GET',    '#^/billing/plans$#',                'billing/plans.php'],
     ['POST',   '#^/billing/checkout$#',             'billing/checkout.php'],
     ['POST',   '#^/billing/portal$#',               'billing/portal.php'],
+    ['POST',   '#^/billing/cancel$#',               'billing/cancel.php'],
     ['POST',   '#^/billing/webhook$#',              'billing/webhook.php'],
 
     ['GET',    '#^/stats$#',                        'stats/index.php'],

@@ -35,6 +35,7 @@ $priceMap = [
     STRIPE_PRICE_STARTER    => 'starter',
     STRIPE_PRICE_PRO        => 'pro',
     STRIPE_PRICE_BUSINESS   => 'business',
+    STRIPE_PRICE_AGENCY     => 'agency',
     STRIPE_PRICE_ENTERPRISE => 'enterprise',
 ];
 
@@ -65,12 +66,35 @@ function upsert_subscription(array $sub, array $priceMap): void {
     }
 }
 
-match ($event['type'] ?? '') {
-    'customer.subscription.created',
-    'customer.subscription.updated',
-    'customer.subscription.deleted' => upsert_subscription($obj, $priceMap),
-    default                          => null,
-};
+switch ($event['type'] ?? '') {
+    case 'customer.subscription.created':
+    case 'customer.subscription.updated':
+    case 'customer.subscription.deleted':
+        upsert_subscription($obj, $priceMap);
+        break;
+
+    case 'invoice.payment_succeeded':
+        // Refresh subscription record so period dates stay current
+        $subId = $obj['subscription'] ?? '';
+        if ($subId) {
+            $ch = curl_init("https://api.stripe.com/v1/subscriptions/$subId");
+            curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_USERPWD => STRIPE_SECRET_KEY . ':']);
+            $sub = json_decode(curl_exec($ch), true);
+            curl_close($ch);
+            if (!empty($sub['id'])) upsert_subscription($sub, $priceMap);
+        }
+        break;
+
+    case 'invoice.payment_failed':
+        $subId = $obj['subscription'] ?? '';
+        if ($subId) {
+            DB::query(
+                "UPDATE subscriptions SET status='past_due', updated_at=NOW() WHERE stripe_subscription_id=?",
+                [$subId]
+            );
+        }
+        break;
+}
 
 http_response_code(200);
 echo 'ok';
