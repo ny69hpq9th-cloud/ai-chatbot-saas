@@ -161,16 +161,19 @@ $user = auth_user();
     </div>
 
     <div class="price-card reveal reveal-delay-3">
-      <h3>Enterprise</h3>
-      <div class="price">Custom</div>
+      <div class="badge" style="background:linear-gradient(90deg,rgba(0,212,255,.15),rgba(139,92,246,.15));color:#a78bfa;border:1px solid rgba(139,92,246,.35);">BEST FOR AGENCIES</div>
+      <h3>Agency</h3>
+      <div class="price">$149<span>/mo</span></div>
       <ul>
         <li>Unlimited chatbots</li>
         <li>Unlimited messages</li>
-        <li>SLA 99.9%</li>
-        <li>Onboarding</li>
-        <li>SSO</li>
+        <li>White-label branding</li>
+        <li>Reseller rights</li>
+        <li>Priority support</li>
+        <li>API access</li>
+        <li>Custom domain</li>
       </ul>
-      <a href="mailto:sales@yourdomain.com" class="btn btn-outline btn-block">Contact us</a>
+      <a href="/register.php?plan=agency" class="btn btn-outline btn-block">Start Agency</a>
     </div>
   </div>
 </section>

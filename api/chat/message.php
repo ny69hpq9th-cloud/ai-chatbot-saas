@@ -55,6 +55,26 @@ DB::insert('messages', [
     'content'         => $message,
 ]);
 
+// Build system prompt — inject knowledge base if present
+$kbItems = DB::findAll(
+    'SELECT title, content FROM knowledge_base WHERE chatbot_id = ? ORDER BY id ASC',
+    [$bot['id']]
+);
+$systemParts = [];
+if (!empty($bot['system_prompt'])) {
+    $systemParts[] = $bot['system_prompt'];
+}
+if (!empty($kbItems)) {
+    $kbText  = "--- KNOWLEDGE BASE ---\n";
+    $kbText .= "Use the following information to answer questions accurately. ";
+    $kbText .= "If the answer is not in the knowledge base, say so honestly.\n\n";
+    foreach ($kbItems as $item) {
+        $heading  = $item['title'] ? "## {$item['title']}\n" : '';
+        $kbText  .= $heading . trim($item['content']) . "\n\n";
+    }
+    $systemParts[] = trim($kbText);
+}
+
 // Build Claude API request
 $messages = array_map(fn($m) => ['role' => $m['role'], 'content' => $m['content']], $history);
 $messages[] = ['role' => 'user', 'content' => $message];
@@ -64,8 +84,8 @@ $payload = [
     'max_tokens' => $bot['max_tokens'],
     'messages'   => $messages,
 ];
-if (!empty($bot['system_prompt'])) {
-    $payload['system'] = $bot['system_prompt'];
+if ($systemParts) {
+    $payload['system'] = implode("\n\n", $systemParts);
 }
 
 $start  = microtime(true);

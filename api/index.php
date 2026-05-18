@@ -44,6 +44,11 @@ $routes = [
     ['POST',   '#^/billing/webhook$#',              'billing/webhook.php'],
 
     ['GET',    '#^/stats$#',                        'stats/index.php'],
+
+    ['GET',    '#^/chatbots/([a-z0-9-]+)/knowledge$#',        'knowledge/index.php'],
+    ['POST',   '#^/chatbots/([a-z0-9-]+)/knowledge$#',        'knowledge/create.php'],
+    ['POST',   '#^/chatbots/([a-z0-9-]+)/knowledge/scrape$#', 'knowledge/scrape.php'],
+    ['DELETE', '#^/chatbots/([a-z0-9-]+)/knowledge/([0-9]+)$#','knowledge/delete.php'],
 ];
 
 $params = [];

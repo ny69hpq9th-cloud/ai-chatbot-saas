@@ -40,6 +40,7 @@ define('STRIPE_PRICE_STARTER',    env('STRIPE_PRICE_STARTER', ''));
 define('STRIPE_PRICE_PRO',        env('STRIPE_PRICE_PRO', ''));
 define('STRIPE_PRICE_BUSINESS',   env('STRIPE_PRICE_BUSINESS', ''));
 define('STRIPE_PRICE_ENTERPRISE', env('STRIPE_PRICE_ENTERPRISE', ''));
+define('STRIPE_PRICE_AGENCY',     env('STRIPE_PRICE_AGENCY', ''));
 
 // ── Claude / Anthropic ────────────────────────────────────────────────────────
 define('ANTHROPIC_API_KEY',     env('ANTHROPIC_API_KEY', ''));
@@ -51,7 +52,8 @@ define('PLAN_LIMITS', [
     'starter'    => ['chatbots' => 1,   'messages_per_month' => 500,   'tokens_per_month' => 100_000],
     'pro'        => ['chatbots' => 5,   'messages_per_month' => 5_000,  'tokens_per_month' => 1_000_000],
     'business'   => ['chatbots' => 20,  'messages_per_month' => 25_000, 'tokens_per_month' => 5_000_000],
-    'enterprise' => ['chatbots' => 999, 'messages_per_month' => 999_999,'tokens_per_month' => 999_999_999],
+    'enterprise' => ['chatbots' => 999,  'messages_per_month' => 999_999,  'tokens_per_month' => 999_999_999],
+    'agency'     => ['chatbots' => 9999, 'messages_per_month' => 9_999_999,'tokens_per_month' => 999_999_999],
 ]);
 
 // ── Session ───────────────────────────────────────────────────────────────────

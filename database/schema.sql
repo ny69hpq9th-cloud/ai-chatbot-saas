@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `subscriptions` (
   `user_id`              INT UNSIGNED NOT NULL,
   `stripe_subscription_id` VARCHAR(100) NOT NULL,
   `stripe_price_id`      VARCHAR(100) NOT NULL,
-  `plan`                 ENUM('starter','pro','business','enterprise') NOT NULL DEFAULT 'starter',
+  `plan`                 ENUM('starter','pro','business','enterprise','agency') NOT NULL DEFAULT 'starter',
   `status`               ENUM('trialing','active','past_due','canceled','unpaid','incomplete') NOT NULL DEFAULT 'trialing',
   `trial_ends_at`        DATETIME     DEFAULT NULL,
   `current_period_start` DATETIME     DEFAULT NULL,
@@ -147,6 +147,24 @@ CREATE TABLE IF NOT EXISTS `usage_stats` (
   UNIQUE KEY `uq_usage_chatbot_date` (`chatbot_id`, `stat_date`),
   KEY `fk_usage_chatbot` (`chatbot_id`),
   CONSTRAINT `fk_usage_chatbot` FOREIGN KEY (`chatbot_id`) REFERENCES `chatbots` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- -------------------------------------------------------
+-- Knowledge base
+-- -------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `knowledge_base` (
+  `id`          INT UNSIGNED   NOT NULL AUTO_INCREMENT,
+  `chatbot_id`  INT UNSIGNED   NOT NULL,
+  `type`        ENUM('text','url') NOT NULL DEFAULT 'text',
+  `title`       VARCHAR(255)   NOT NULL DEFAULT '',
+  `content`     MEDIUMTEXT     NOT NULL,
+  `source_url`  VARCHAR(500)   DEFAULT NULL,
+  `char_count`  INT UNSIGNED   NOT NULL DEFAULT 0,
+  `created_at`  DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `fk_kb_chatbot` (`chatbot_id`),
+  KEY `idx_kb_created` (`created_at`),
+  CONSTRAINT `fk_kb_chatbot` FOREIGN KEY (`chatbot_id`) REFERENCES `chatbots` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- -------------------------------------------------------
