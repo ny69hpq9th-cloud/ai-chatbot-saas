@@ -16,7 +16,7 @@ $user = auth_user();
 </head>
 <body>
 
-<!-- ── Navbar ─────────────────────────────────────────────────── -->
+<!-- ── Navbar ─────────────────────────────────────────────── -->
 <nav class="navbar">
   <a href="/" class="brand"><?= APP_NAME ?></a>
   <div class="nav-links">
@@ -31,16 +31,19 @@ $user = auth_user();
   </div>
 </nav>
 
-<!-- ── Hero ───────────────────────────────────────────────────── -->
+<!-- ── Hero ───────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-eyebrow">Powered by Anthropic Claude</div>
 
   <h1>
-    Deploy AI chatbots
+    Deploy AI chatbots<br>
     <span class="grad-text">in under 2 minutes</span>
   </h1>
 
-  <p>Add a fully customizable AI assistant to any website with a single line of code.<br>No backend, no training, no complexity.</p>
+  <p>
+    Add a fully customizable AI assistant to any website with a single line of code.
+    No backend, no training, no complexity.
+  </p>
 
   <div class="hero-actions">
     <a href="/register.php" class="btn btn-primary btn-lg">Start 14-day free trial</a>
@@ -69,118 +72,110 @@ $user = auth_user();
 
 <hr class="glow-divider">
 
-<!-- ── Features ───────────────────────────────────────────────── -->
+<!-- ── Features ───────────────────────────────────────────── -->
 <section class="features" id="features">
-  <div class="section-inner">
-    <span class="section-label reveal">Capabilities</span>
-    <h2 class="section-h2 reveal">Everything you need to <span class="grad-text">ship faster</span></h2>
-    <p class="section-sub reveal">From a single embed snippet to enterprise-grade analytics — all included out of the box.</p>
+  <span class="section-label">Capabilities</span>
+  <h2>Everything you need to <span class="grad-text">ship faster</span></h2>
+  <p class="sub-heading">From a single embed snippet to enterprise-grade analytics — all included.</p>
 
-    <div class="feature-grid">
-      <div class="card reveal">
-        <span class="icon">⚡</span>
-        <h3>Instant setup</h3>
-        <p>Paste one line of JavaScript. Your chatbot is live in seconds. No backend configuration required.</p>
-      </div>
-      <div class="card reveal d1">
-        <span class="icon">🤖</span>
-        <h3>Claude-powered</h3>
-        <p>Built on Anthropic Claude — the safest, most accurate AI available. State-of-the-art reasoning.</p>
-      </div>
-      <div class="card reveal d2">
-        <span class="icon">📊</span>
-        <h3>Analytics</h3>
-        <p>Track conversations, messages, and user satisfaction in real-time with a beautiful dashboard.</p>
-      </div>
-      <div class="card reveal d3">
-        <span class="icon">🎨</span>
-        <h3>Custom branding</h3>
-        <p>Match your brand colors, name, and personality perfectly. Full widget customization included.</p>
-      </div>
-      <div class="card reveal d4">
-        <span class="icon">🔒</span>
-        <h3>Secure by default</h3>
-        <p>Domain restrictions, rate limiting, and GDPR-compliant data handling out of the box.</p>
-      </div>
-      <div class="card reveal d5">
-        <span class="icon">💳</span>
-        <h3>Simple billing</h3>
-        <p>Transparent pricing, cancel anytime. No hidden fees, no per-seat nonsense.</p>
-      </div>
+  <div class="grid-3">
+    <div class="card reveal">
+      <span class="icon">⚡</span>
+      <h3>Instant setup</h3>
+      <p>Paste one line of JavaScript. Your chatbot is live in seconds. No backend configuration required.</p>
+    </div>
+    <div class="card reveal reveal-delay-1">
+      <span class="icon">🤖</span>
+      <h3>Claude-powered</h3>
+      <p>Built on Anthropic Claude — the safest, most accurate AI available. State-of-the-art reasoning.</p>
+    </div>
+    <div class="card reveal reveal-delay-2">
+      <span class="icon">📊</span>
+      <h3>Analytics</h3>
+      <p>Track conversations, messages, and user satisfaction in real-time with a beautiful dashboard.</p>
+    </div>
+    <div class="card reveal reveal-delay-3">
+      <span class="icon">🎨</span>
+      <h3>Custom branding</h3>
+      <p>Match your brand colors, name, and personality perfectly. Full widget customization.</p>
+    </div>
+    <div class="card reveal reveal-delay-4">
+      <span class="icon">🔒</span>
+      <h3>Secure by default</h3>
+      <p>Domain restrictions, rate limiting, and GDPR-compliant data handling out of the box.</p>
+    </div>
+    <div class="card reveal reveal-delay-5">
+      <span class="icon">💳</span>
+      <h3>Simple billing</h3>
+      <p>Transparent pricing, cancel anytime. No hidden fees, no per-seat nonsense.</p>
     </div>
   </div>
 </section>
 
 <hr class="glow-divider">
 
-<!-- ── Pricing ─────────────────────────────────────────────────── -->
+<!-- ── Pricing ─────────────────────────────────────────────── -->
 <section class="pricing" id="pricing">
-  <div class="section-inner">
-    <span class="section-label reveal">Pricing</span>
-    <h2 class="section-h2 reveal">Simple, <span class="grad-text">transparent</span> pricing</h2>
-    <p class="section-sub reveal">Start free for 14 days. No credit card required. Cancel anytime.</p>
+  <span class="section-label">Pricing</span>
+  <h2>Simple, <span class="grad-text">transparent</span> pricing</h2>
+  <p class="sub-heading">Start free for 14 days. No credit card required. Cancel anytime.</p>
 
-    <div class="pricing-grid reveal">
-      <div class="price-card">
-        <h3>Starter</h3>
-        <div class="price">$9<span>/mo</span></div>
-        <p class="price-sub">Per month, billed monthly</p>
-        <ul>
-          <li>1 chatbot</li>
-          <li>500 messages/mo</li>
-          <li>Basic analytics</li>
-          <li>Email support</li>
-        </ul>
-        <a href="/register.php?plan=starter" class="btn btn-outline btn-block">Get started</a>
-      </div>
+  <div class="grid-4">
+    <div class="price-card reveal">
+      <h3>Starter</h3>
+      <div class="price">$9<span>/mo</span></div>
+      <ul>
+        <li>1 chatbot</li>
+        <li>500 messages/mo</li>
+        <li>Basic analytics</li>
+        <li>Email support</li>
+      </ul>
+      <a href="/register.php?plan=starter" class="btn btn-outline btn-block">Get started</a>
+    </div>
 
-      <div class="price-card featured">
-        <div class="badge">Most popular</div>
-        <h3>Pro</h3>
-        <div class="price">$29<span>/mo</span></div>
-        <p class="price-sub">Per month, billed monthly</p>
-        <ul>
-          <li>5 chatbots</li>
-          <li>5,000 messages/mo</li>
-          <li>Advanced analytics</li>
-          <li>Priority support</li>
-          <li>Custom branding</li>
-        </ul>
-        <a href="/register.php?plan=pro" class="btn btn-primary btn-block">Get started</a>
-      </div>
+    <div class="price-card featured reveal reveal-delay-1">
+      <div class="badge">Most popular</div>
+      <h3>Pro</h3>
+      <div class="price">$29<span>/mo</span></div>
+      <ul>
+        <li>5 chatbots</li>
+        <li>5,000 messages/mo</li>
+        <li>Advanced analytics</li>
+        <li>Priority support</li>
+        <li>Custom branding</li>
+      </ul>
+      <a href="/register.php?plan=pro" class="btn btn-primary btn-block">Get started</a>
+    </div>
 
-      <div class="price-card">
-        <h3>Business</h3>
-        <div class="price">$79<span>/mo</span></div>
-        <p class="price-sub">Per month, billed monthly</p>
-        <ul>
-          <li>20 chatbots</li>
-          <li>25,000 messages/mo</li>
-          <li>Full analytics</li>
-          <li>Dedicated support</li>
-          <li>API access</li>
-        </ul>
-        <a href="/register.php?plan=business" class="btn btn-outline btn-block">Get started</a>
-      </div>
+    <div class="price-card reveal reveal-delay-2">
+      <h3>Business</h3>
+      <div class="price">$79<span>/mo</span></div>
+      <ul>
+        <li>20 chatbots</li>
+        <li>25,000 messages/mo</li>
+        <li>Full analytics</li>
+        <li>Dedicated support</li>
+        <li>API access</li>
+      </ul>
+      <a href="/register.php?plan=business" class="btn btn-outline btn-block">Get started</a>
+    </div>
 
-      <div class="price-card">
-        <h3>Enterprise</h3>
-        <div class="price">Custom</div>
-        <p class="price-sub">Volume pricing available</p>
-        <ul>
-          <li>Unlimited chatbots</li>
-          <li>Unlimited messages</li>
-          <li>SLA 99.9%</li>
-          <li>Onboarding</li>
-          <li>SSO</li>
-        </ul>
-        <a href="mailto:sales@yourdomain.com" class="btn btn-outline btn-block">Contact us</a>
-      </div>
+    <div class="price-card reveal reveal-delay-3">
+      <h3>Enterprise</h3>
+      <div class="price">Custom</div>
+      <ul>
+        <li>Unlimited chatbots</li>
+        <li>Unlimited messages</li>
+        <li>SLA 99.9%</li>
+        <li>Onboarding</li>
+        <li>SSO</li>
+      </ul>
+      <a href="mailto:sales@yourdomain.com" class="btn btn-outline btn-block">Contact us</a>
     </div>
   </div>
 </section>
 
-<!-- ── Footer ─────────────────────────────────────────────────── -->
+<!-- ── Footer ─────────────────────────────────────────────── -->
 <footer class="footer">
   <p>&copy; <?= date('Y') ?> <?= APP_NAME ?>. All rights reserved.</p>
   <div class="footer-links">
@@ -192,10 +187,17 @@ $user = auth_user();
 
 <script src="/assets/js/main.js"></script>
 <script>
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+      observer.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
