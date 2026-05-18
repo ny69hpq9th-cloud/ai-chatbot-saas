@@ -45,6 +45,8 @@ $routes = [
 
     ['GET',    '#^/stats$#',                        'stats/index.php'],
 
+    ['GET',    '#^/widget/([a-z0-9-]+)/config$#',              'widget/config.php'],
+
     ['GET',    '#^/chatbots/([a-z0-9-]+)/knowledge$#',        'knowledge/index.php'],
     ['POST',   '#^/chatbots/([a-z0-9-]+)/knowledge$#',        'knowledge/create.php'],
     ['POST',   '#^/chatbots/([a-z0-9-]+)/knowledge/scrape$#', 'knowledge/scrape.php'],
