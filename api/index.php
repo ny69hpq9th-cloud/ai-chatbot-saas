@@ -16,7 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 $uri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri    = str_replace('/api', '', $uri);
+// Strip the /api prefix (only the leading one, not occurrences inside UUIDs)
+$uri    = preg_replace('#^/api#', '', $uri);
+// Strip trailing slash so /chatbots/ matches the same route as /chatbots
+$uri    = rtrim($uri, '/') ?: '/';
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Route map: [method, regex] => handler file

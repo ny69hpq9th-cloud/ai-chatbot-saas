@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /api/
+
+# Prevent Apache from 301-redirecting /api/chatbots → /api/chatbots/
+# (api/chatbots/ is a real directory, mod_dir would redirect without this)
+DirectorySlash Off
+
+# Route all requests through the front controller (index.php)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
